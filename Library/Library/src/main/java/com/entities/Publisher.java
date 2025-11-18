@@ -17,11 +17,11 @@ import jakarta.validation.constraints.Size;
 public class Publisher {
 
 	@OneToMany( mappedBy = "publisher" )
-	private List<Book> book;
+	private List<Book> books;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@NotBlank
 	@Size( max = 120 )
@@ -38,6 +38,10 @@ public class Publisher {
 	@Size( max = 30 )
 	private String phone;
 		
+
+	public Publisher() {
+    }
+
 	public Publisher( String name, String cnpj, String address, String phone ) {
 		this.name = name;
 		this.cnpj = cnpj;
@@ -87,11 +91,11 @@ public class Publisher {
 	}
 
 	public List<Book> getBook( ) {
-		return book;
+		return books;
 	}
 
-	public void setBook( List<Book> book ) {
-		this.book = book;
+	public void setBook( List<Book> books ) {
+		this.books = books;
 	}
 
     }

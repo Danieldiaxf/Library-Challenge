@@ -1,7 +1,5 @@
 package com.entities;
 
-import java.util.List;
-import java.util.Set;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,8 +16,9 @@ import jakarta.validation.constraints.Size;
 public class Book {
 
     @ManyToOne
-    private Publisher publisher;
     @JoinColumn( name = "Publisher_id" )
+    private Publisher publisher;
+    
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -31,8 +30,7 @@ public class Book {
     @Column( unique = true, name = "ISBN" )
     private String isbn;
 
-    @Size( min = 4, max = 4 )
-    private Long year;
+    private Integer year;
 
     private String language;
 
@@ -44,7 +42,7 @@ public class Book {
     }
 
 
-    public String getIsbn() {
+    public String getIsbn( ) {
         return isbn;
     }
     public void setIsbn(String isbn) {
@@ -52,10 +50,10 @@ public class Book {
     }
 
 
-    public Long getYear() {
+    public Integer getYear( ) {
         return year;
     }
-    public void setYear( Long year ) {
+    public void setYear( Integer year ) {
         this.year = year;
     }
 
