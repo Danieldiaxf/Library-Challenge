@@ -20,7 +20,7 @@ public class Publisher {
 	private List<Book> books;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private Long id;
 	
 	@NotBlank
@@ -39,10 +39,10 @@ public class Publisher {
 	private String phone;
 		
 
-	public Publisher() {
+	public Publisher(  ) {
     }
 
-	public Publisher( String name, String cnpj, String address, String phone ) {
+	public Publisher( String name, @NotBlank String cnpj, String address, String phone ) {
 		this.name = name;
 		this.cnpj = cnpj;
 		this.address = address;

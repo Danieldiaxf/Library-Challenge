@@ -56,7 +56,7 @@ public class Book {
     public String getIsbn( ) {
         return isbn;
     }
-    public void setIsbn(String isbn) {
+    public void setIsbn( String isbn ) {
         this.isbn = isbn;
     }
 
@@ -84,7 +84,7 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public Long getId() {
+    public Long getId( ) {
         return id;
     }
 
