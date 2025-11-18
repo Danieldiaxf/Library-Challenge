@@ -50,11 +50,11 @@ public class Publisher {
 	
 	}
 
-	public long getId( ) {
+	public Long getId( ) {
 		return id;
 	}
 
-	public void setId( long id ) {
+	public void setId( Long id ) {
 		this.id = id;
 	}
 
@@ -90,11 +90,11 @@ public class Publisher {
 		this.phone = phone;
 	}
 
-	public List<Book> getBook( ) {
+	public List<Book> getBooks( ) {
 		return books;
 	}
 
-	public void setBook( List<Book> books ) {
+	public void setBooks( List<Book> books ) {
 		this.books = books;
 	}
 
