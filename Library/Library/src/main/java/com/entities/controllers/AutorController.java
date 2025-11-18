@@ -20,7 +20,7 @@ public class AutorController {
 	
 			
 	@Autowired
-	AutorRepository autorRepository;
+	AuthorRepository autorRepository;
 	
 	@PostMapping
 	public Autor salvarAutor(@RequestBody Autor autor) { //Salvar o autor

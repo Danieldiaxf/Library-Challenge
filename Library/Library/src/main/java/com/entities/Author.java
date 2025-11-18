@@ -1,4 +1,4 @@
-package entities;
+package com.entities;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -10,58 +10,62 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
 @Entity
-public class Autor {
+public class Author {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(nullable = false)
-	private String nome;
+
+	@Column( nullable = false )
+	private String name;
+
 	private String CPF;
+
 	private String email;
+
 	private String DataNascimento;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "endereco_id")
+	@OneToOne( cascade = CascadeType.ALL )
+	@JoinColumn( name = "endereco_id" )
 	private Endereco endereco;
 
-	public long getId() {
+	public Long getId( ) {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId( Long id ) {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName( ) {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName( String name ) {
+		this.name = name;
 	}
 
 	public String getCPF() {
 		return CPF;
 	}
 
-	public void setCPF(String cPF) {
-		CPF = cPF;
+	public void setCPF( String CPF ) {
+		CPF = CPF;
 	}
 
-	public String getEmail() {
+	public String getEmail( ) {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail( String email ) {
 		this.email = email;
 	}
 
-	public String getDataNascimento() {
+	public String getDataNascimento( ) {
 		return DataNascimento;
 	}
 
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento( String dataNascimento ) {
 		DataNascimento = dataNascimento;
 	}
 
@@ -69,7 +73,7 @@ public class Autor {
 		return endereco;
 	}
 
-	public void setEndereco(Endereco endereco) {
+	public void setEndereco( Endereco endereco ) {
 		this.endereco = endereco;
 	}
 	

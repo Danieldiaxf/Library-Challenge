@@ -1,7 +1,8 @@
-package entities;
+package com.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import com.entities.Author;
 
-public interface AutorRepository extends JpaRepository<Autor, Long>{
+public interface AuthorRepository extends JpaRepository<Author, Long>{
 
 }
