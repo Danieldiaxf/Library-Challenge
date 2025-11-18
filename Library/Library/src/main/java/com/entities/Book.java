@@ -9,7 +9,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 @Entity
 @Table( name = "Book" )
@@ -33,6 +32,18 @@ public class Book {
     private Integer year;
 
     private String language;
+
+    public Book(Publisher publisher, @NotBlank String name, String isbn, Integer year, String language) {
+        this.publisher = publisher;
+        this.name = name;
+        this.isbn = isbn;
+        this.year = year;
+        this.language = language;
+    }
+
+    public Book( ){
+
+    }
 
     public String getName( ) {
         return name;
