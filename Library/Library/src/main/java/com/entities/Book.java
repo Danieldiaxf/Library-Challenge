@@ -33,7 +33,7 @@ public class Book {
 
     private String language;
 
-    public Book(Publisher publisher, @NotBlank String name, String isbn, Integer year, String language) {
+    public Book( Publisher publisher, @NotBlank String name, String isbn, Integer year, String language ) {
         this.publisher = publisher;
         this.name = name;
         this.isbn = isbn;
