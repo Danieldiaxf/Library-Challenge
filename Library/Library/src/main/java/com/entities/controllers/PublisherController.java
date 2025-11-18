@@ -1,4 +1,4 @@
-package com.repositories;
+package com.entities.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.entities.Publisher;
+import com.repositories.PublisherRepository;
 
 @RestController
 @RequestMapping( "/api/Library" )
