@@ -1,17 +1,12 @@
 package com.entities;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -20,6 +15,9 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table( name = "Publisher" )
 public class Publisher {
+
+	@OneToMany( mappedBy = "publisher" )
+	private List<Book> book;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

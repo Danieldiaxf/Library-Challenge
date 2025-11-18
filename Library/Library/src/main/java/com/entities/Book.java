@@ -1,13 +1,14 @@
 package com.entities;
 
-import jakarta.persistence.CascadeType;
+import java.util.List;
+import java.util.Set;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -15,6 +16,10 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table( name = "Book" )
 public class Book {
+
+    @ManyToOne
+    private Publisher publisher;
+    @JoinColumn( name = "Publisher_id" )
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -60,6 +65,14 @@ public class Book {
     }
     public void setLanguage( String language ) {
         this.language = language;
+    }
+
+
+    public Publisher getPublisher( ) {
+        return publisher;
+    }
+    public void setPublisher( Publisher publisher ) {
+        this.publisher = publisher;
     }
 
     
