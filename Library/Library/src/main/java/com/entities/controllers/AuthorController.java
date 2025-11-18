@@ -16,7 +16,7 @@ import com.entities.Author;
 import com.repositories.AuthorRepository;
 
 @RestController
-@RequestMapping("/api/author")
+@RequestMapping( "/api/author" )
 public class AuthorController {
 	
 	@Autowired
@@ -24,12 +24,12 @@ public class AuthorController {
 	
 	@PostMapping
 	public Author salvarAutor( @RequestBody Author author ) { //Salvar o autor
-		return authorRepository.save(author);
+		return authorRepository.save( author );
 	}
 	
 	@GetMapping
-	public List<Author> mostrarAutores(){ //Listar os autores
-		return authorRepository.findAll();
+	public List<Author> mostrarAutores(  ){ //Listar os autores
+		return authorRepository.findAll(  );
 	}
 	
 	@DeleteMapping("/{Id}") //Vai ser deletado identificando o Id
@@ -45,8 +45,8 @@ public class AuthorController {
 			author.setName(newAuthor.getName( ) );
 			author.setCPF( newAuthor.getCPF( ) );
 			author.setEmail( newAuthor.getEmail( ) );
-			author.setDataNascimento( newAuthor.getDataNascimento( ) );
-			author.setEndereco( newAuthor.getEndereco( ) );
+			author.setBirth( newAuthor.getBirth( ) );
+			author.setAddress( newAuthor.getAddress( ) );
 			return authorRepository.save( author );//Salvando este novo autor
 		}
 		return null;

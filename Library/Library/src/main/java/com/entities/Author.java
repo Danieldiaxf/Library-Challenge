@@ -1,13 +1,11 @@
 package com.entities;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Author {
@@ -19,15 +17,15 @@ public class Author {
 	@Column( nullable = false )
 	private String name;
 
+	@Column( nullable = false, unique = true, name = "CPF" )
+	@NotBlank
 	private String CPF;
 
 	private String email;
 
-	private String DataNascimento;
-	
-	@OneToOne( cascade = CascadeType.ALL )
-	@JoinColumn( name = "endereco_id" )
-	private Endereco endereco;
+	private String birth;
+
+	private String address;
 
 	public Long getId( ) {
 		return id;
@@ -45,7 +43,7 @@ public class Author {
 		this.name = name;
 	}
 
-	public String getCPF() {
+	public String getCPF( ) {
 		return CPF;
 	}
 
@@ -61,20 +59,20 @@ public class Author {
 		this.email = email;
 	}
 
-	public String getDataNascimento( ) {
-		return DataNascimento;
+	public String getBirth( ) {
+		return birth;
 	}
 
-	public void setDataNascimento( String dataNascimento ) {
-		DataNascimento = dataNascimento;
+	public void setBirth( String birth ) {
+		birth = birth;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
+	public String getAddress( ) {
+		return address;
 	}
 
-	public void setEndereco( Endereco endereco ) {
-		this.endereco = endereco;
+	public void setAddress( String address ) {
+		this.address = address;
 	}
 	
 }
