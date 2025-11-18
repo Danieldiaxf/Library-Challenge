@@ -1,4 +1,4 @@
-package com.entities.controllers;
+package com.controllers;
 
 import java.util.List;
 import java.util.Optional;
