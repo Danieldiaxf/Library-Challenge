@@ -11,7 +11,7 @@ import jakarta.validation.constraints.NotBlank;
 public class Author {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private long id;
 
 	@Column( nullable = false )
