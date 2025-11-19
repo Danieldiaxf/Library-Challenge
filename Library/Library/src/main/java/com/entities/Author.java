@@ -56,7 +56,7 @@ public class Author {
 	}
 
 	public void setCPF( String CPF ) {
-		CPF = CPF;
+		this.CPF = CPF;
 	}
 
 	public String getEmail( ) {
@@ -72,7 +72,7 @@ public class Author {
 	}
 
 	public void setBirth( String birth ) {
-		birth = birth;
+		this.birth = birth;
 	}
 
 	public String getAddress( ) {
