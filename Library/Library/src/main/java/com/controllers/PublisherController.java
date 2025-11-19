@@ -3,6 +3,7 @@ package com.controllers;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.entities.Publisher;
 import com.repositories.PublisherRepository;
 
+import jakarta.annotation.Nonnull;
+
 @RestController
 @RequestMapping( "/api/Library" )
 
@@ -24,7 +27,7 @@ public class PublisherController {
 
     
     @PostMapping
-    public Publisher savPublisher( @RequestBody Publisher publisher ) {
+    public Publisher savPublisher( @RequestBody @NonNull Publisher publisher ) {
         return publisherRepository.save( publisher );
     }
 
@@ -34,13 +37,13 @@ public class PublisherController {
     }
 
     @DeleteMapping
-    public void deletePublisher( @PathVariable Long id ) {
+    public void deletePublisher( @PathVariable @Nonnull long id ) {
         publisherRepository.deleteById( id );
     }
 
     
     @PutMapping( "/{id}" )
-	public Publisher updatePublisher( @PathVariable Long id, @RequestBody Publisher newPublisher ) {
+	public Publisher updatePublisher( @PathVariable @Nonnull long id, @RequestBody Publisher newPublisher ) {
 		Optional<Publisher> optionalPublisher = publisherRepository.findById( id );
 		if ( optionalPublisher.isPresent( ) ) {
 			Publisher publisher = optionalPublisher.get();

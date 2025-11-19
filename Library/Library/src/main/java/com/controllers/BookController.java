@@ -3,6 +3,7 @@ package com.controllers;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,17 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.entities.Book;
 import com.repositories.BookRepository;
+import jakarta.annotation.Nonnull;
 
 @RestController
 @RequestMapping( "/api/library" )
 
 public class BookController {
     
-   @Autowired
+	@Autowired
 	BookRepository bookRepository;
 
 	@PostMapping
-	public Book saveBook( @RequestBody Book book ) {
+	public Book saveBook( @RequestBody @NonNull Book book ) {
 		return bookRepository.save( book );
 	}
 
@@ -33,12 +35,12 @@ public class BookController {
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteBook( @PathVariable Long id ) {
+	public void deleteBook( @PathVariable @Nonnull long id ) {
 		bookRepository.deleteById( id );
 	}
 
 	@PutMapping( "/{id}" )
-	public Book updateBook( @PathVariable Long id, @RequestBody Book newBook ) {
+	public Book updateBook( @PathVariable @Nonnull long id, @RequestBody Book newBook ) {
 		Optional<Book> optionalBook = bookRepository.findById( id );
 		if (optionalBook.isPresent()) {
 			Book book = optionalBook.get();

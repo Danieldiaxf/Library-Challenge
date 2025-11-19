@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +24,7 @@ public class AuthorController {
 	AuthorRepository authorRepository;
 	
 	@PostMapping
-	public Author saveAuthor( @RequestBody Author author ) {
+	public Author saveAuthor( @RequestBody @NonNull Author author ) {
 		return authorRepository.save( author );
 	}
 	
@@ -33,7 +34,7 @@ public class AuthorController {
 	}
 	
 	@DeleteMapping("/{Id}")
-	public void deleteAuthor( @PathVariable Long Id ) {
+	public void deleteAuthor( @PathVariable @NonNull Long Id ) {
 		authorRepository.deleteById( Id );
 	}
 	
