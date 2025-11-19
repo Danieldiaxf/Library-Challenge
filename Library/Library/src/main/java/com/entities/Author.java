@@ -11,84 +11,94 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 
+// Indica que esta classe representa uma entidade JPA mapeada para uma tabela no banco
 @Entity
 public class Author {
 
-	@OneToMany
-	@JoinColumn( name = "Publisher_id" )
-	private List<Book> books;
-	
-	@Id
-	@GeneratedValue( strategy = GenerationType.IDENTITY )
-	private Long id;
+    // Define um relacionamento One-to-Many entre Author e Book
+    @OneToMany
+    // Especifica a coluna que fará o vínculo na tabela Book (chave estrangeira)
+    @JoinColumn( name = "Publisher_id" )
+    private List<Book> books;
+    
+    // Identifica o campo como chave primária
+    @Id
+    // Define que o ID será gerado automaticamente pelo banco (auto-increment)
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    private Long id;
 
-	@Column( nullable = false )
-	private String name;
+    // Campo obrigatório (not null) do nome do autor
+    @Column( nullable = false )
+    private String name;
 
-	@Column( nullable = false, unique = true, name = "CPF" )
-	@NotBlank
-	private String CPF;
+    // Campo obrigatório, único e renomeado como "CPF" no banco
+    @Column( nullable = false, unique = true, name = "CPF" )
+    @NotBlank // Validação: não pode ser vazio nem apenas espaços
+    private String CPF;
 
-	private String email;
+    // Armazena o email do autor (campo opcional)
+    private String email;
 
-	private String birth;
+    // Armazena a data de nascimento (campo opcional — seria ideal usar LocalDate)
+    private String birth;
 
-	private String address;
+    // Armazena o endereço do autor
+    private String address;
 
-	public Long getId( ) {
-		return id;
-	}
+    // Getters e setters para acesso e modificação dos atributos
+    public Long getId( ) {
+        return id;
+    }
 
-	public void setId( Long id ) {
-		this.id = id;
-	}
+    public void setId( Long id ) {
+        this.id = id;
+    }
 
-	public String getName( ) {
-		return name;
-	}
+    public String getName( ) {
+        return name;
+    }
 
-	public void setName( String name ) {
-		this.name = name;
-	}
+    public void setName( String name ) {
+        this.name = name;
+    }
 
-	public String getCPF( ) {
-		return CPF;
-	}
+    public String getCPF( ) {
+        return CPF;
+    }
 
-	public void setCPF( String CPF ) {
-		this.CPF = CPF;
-	}
+    public void setCPF( String CPF ) {
+        this.CPF = CPF;
+    }
 
-	public String getEmail( ) {
-		return email;
-	}
+    public String getEmail( ) {
+        return email;
+    }
 
-	public void setEmail( String email ) {
-		this.email = email;
-	}
+    public void setEmail( String email ) {
+        this.email = email;
+    }
 
-	public String getBirth( ) {
-		return birth;
-	}
+    public String getBirth( ) {
+        return birth;
+    }
 
-	public void setBirth( String birth ) {
-		this.birth = birth;
-	}
+    public void setBirth( String birth ) {
+        this.birth = birth;
+    }
 
-	public String getAddress( ) {
-		return address;
-	}
+    public String getAddress( ) {
+        return address;
+    }
 
-	public void setAddress( String address ) {
-		this.address = address;
-	}
+    public void setAddress( String address ) {
+        this.address = address;
+    }
 
-	public List<Book> getBooks( ) {
-		return books;
-	}
+    public List<Book> getBooks( ) {
+        return books;
+    }
 
-	public void setBooks( List<Book> books ) {
-		this.books = books;
-	}
-
+    public void setBooks( List<Book> books ) {
+        this.books = books;
+    }
 }
