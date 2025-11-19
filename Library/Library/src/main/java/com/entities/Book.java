@@ -17,6 +17,10 @@ public class Book {
     @ManyToOne
     @JoinColumn( name = "Publisher_id" )
     private Publisher publisher;
+
+    @ManyToOne
+    @JoinColumn( name = "Author_id" )
+    private Author author;
     
 
     @Id
@@ -91,5 +95,15 @@ public class Book {
     public void setId( Long id ) {
         this.id = id;
     }
+
+    public Author getAuthor( ) {
+        return author;
+    }
+
+    public void setAuthor( Author author ) {
+        this.author = author;
+    }
+
+    
 
 }

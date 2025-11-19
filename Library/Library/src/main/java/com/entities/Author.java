@@ -1,14 +1,22 @@
 package com.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Author {
+
+	@OneToMany
+	@JoinColumn( name = "Publisher_id" )
+	private List<Book> books;
 	
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -74,5 +82,13 @@ public class Author {
 	public void setAddress( String address ) {
 		this.address = address;
 	}
-	
+
+	public List<Book> getBooks( ) {
+		return books;
+	}
+
+	public void setBooks( List<Book> books ) {
+		this.books = books;
+	}
+
 }
