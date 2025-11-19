@@ -23,32 +23,31 @@ public class AuthorController {
 	AuthorRepository authorRepository;
 	
 	@PostMapping
-	public Author salvarAutor( @RequestBody Author author ) { //Salvar o autor
+	public Author saveAuthor( @RequestBody Author author ) {
 		return authorRepository.save( author );
 	}
 	
 	@GetMapping
-	public List<Author> mostrarAutores(  ){ //Listar os autores
+	public List<Author> showAuthors(  ){
 		return authorRepository.findAll(  );
 	}
 	
-	@DeleteMapping("/{Id}") //Vai ser deletado identificando o Id
-	public void deletarAutor( @PathVariable Long Id ) { //Deletar um autor
+	@DeleteMapping("/{Id}")
+	public void deleteAuthor( @PathVariable Long Id ) {
 		authorRepository.deleteById( Id );
 	}
 	
 	@PutMapping
-	public Author atualizarAutor( @PathVariable long Id, @RequestBody Author newAuthor ) {
-		Optional<Author> optionalAuthor = authorRepository.findById(Id);
-		if( optionalAuthor.isPresent( ) ) { //Metodo para verficiar se existe
-			Author author = optionalAuthor.get( ); //Pegando os dados
-			author.setName(newAuthor.getName( ) );
-			author.setCPF( newAuthor.getCPF( ) );
-			author.setEmail( newAuthor.getEmail( ) );
-			author.setBirth( newAuthor.getBirth( ) );
-			author.setAddress( newAuthor.getAddress( ) );
-			return authorRepository.save( author );//Salvando este novo autor
-		}
-		return null;
+	public Author atualizarAuthor( @PathVariable long Id, @RequestBody Author newAuthor ) {
+	Optional<Author> optionalAuthor = authorRepository.findById(Id);
+	if( optionalAuthor.isPresent( ) ) {
+		Author author = optionalAuthor.get( );
+		author.setName(newAuthor.getName( ) );
+		author.setCPF( newAuthor.getCPF( ) );
+		author.setEmail( newAuthor.getEmail( ) );
+		author.setBirth( newAuthor.getBirth( ) );
+		author.setAddress( newAuthor.getAddress( ) );
+		return authorRepository.save( author );
+		}return null;
 	}
 }
