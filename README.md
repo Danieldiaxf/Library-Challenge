@@ -1,119 +1,138 @@
-📚 **Library Management API**
+📚 **Library API — Sistema de Gerenciamento de Biblioteca**
 
-Um sistema moderno para gerenciamento de editoras dentro de uma biblioteca. Construído com Spring Boot, seguindo boas práticas de arquitetura, organização e padronização REST — ideal para escalabilidade, manutenção e uso profissional.
+API desenvolvida em Java + Spring Boot, estruturada para gerenciar Authors, Books e Publishers com operações completas de CRUD e arquitetura organizada.
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-🎯 **Objetivo do Projeto**
+**1. Visão Geral do Projeto**
 
-Este sistema fornece um conjunto de endpoints REST para realizar operações de CRUD de Editoras (Publishers), permitindo que bibliotecas integrem, registrem e administrem seus fornecedores de livros de maneira eficiente.
+Sistema REST que implementa o gerenciamento básico de uma biblioteca, permitindo cadastro, consulta, atualização e remoção de livros, autores e editoras.
 
+O objetivo da API é fornecer uma base sólida para estudos de arquitetura, boas práticas e organização de código, seguindo padrões profissionais utilizados na indústria.
 
-🧩 **Principais Funcionalidades**
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-📥 Criar uma nova editora
+**2. Arquitetura e Design**
 
-📄 Listar todas as editoras
+A API é estruturada seguindo princípios de separação de responsabilidades, garantindo clareza, organização e extensibilidade.
 
-✏️ Atualizar uma editora existente
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-🗑️ Deletar uma editora pelo ID
+📦 Estrutura de Pacotes
+entities/
 
-🔒 Validação com anotações @NonNull / @Nonnull
+Contém os modelos principais da aplicação (Book, Author, Publisher)
+Cada classe utiliza anotações de validação e mapeamento JPA.
 
-🧹 Padrões REST limpos e organizados
+controllers/
 
-🗂️ Separação clara entre Controller, Repository e Entity
+Expõe os endpoints REST.
+Responsáveis por receber solicitações HTTP e interagir com os repositórios.
 
+repositories/
 
-🧱 **Arquitetura da Aplicação**
+Interfaces JPA com comunicação direta ao banco de dados.
 
-O projeto segue uma estrutura limpa e escalável:
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-src/main/java
- └── com
-     ├── controllers
-     │     └── PublisherController.java
-     ├── entities
-     │     └── Publisher.java
-     └── repositories
-           └── PublisherRepository.java
-           
+**3. Stack Tecnológica**
 
-🔌 **Endpoints da API**
-▶️ Base URL
-/api/Library
+| Categoria                   | Tecnologia                  | Justificativa                                                |
+| --------------------------- | --------------------------- | ------------------------------------------------------------ |
+| **Framework Base**          | Spring Boot 3 / Java 17     | Produtividade, robustez e convenções modernas.               |
+| **Persistência**            | Spring Data JPA / Hibernate | Simplificação no acesso aos dados e suporte completo ao ORM. |
+| **Banco de Dados**          | H2 / PostgreSQL             | H2 para testes rápidos; PostgreSQL para produção/estudos.    |
+| **Validações**              | Jakarta Validation          | Garantia da integridade dos dados da API.                    |
+| **Documentação (Opcional)** | Springdoc / Swagger UI      | Facilita visualização dos endpoints.                         |
+| **Utilitários**             | Lombok (opcional)           | Redução de código boilerplate.                               |
 
-📥 Criar Editora
-POST /api/Library
-Recebe um JSON de Publisher
-Valida com @NonNull
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-📄 Listar Editoras
-GET /api/Library
+**4. Funcionalidades**
 
-✏️ Atualizar Editora
-PUT /api/Library/{id}
-Atualiza name, address, cnpj e phone.
+✅ Authors
 
-🗑️ Deletar Editora
-DELETE /api/Library/{id}
-Remove uma editora com base no seu identificador único (id).
+Cadastro de autores
 
+Listagem geral
 
-🏗️ **Tecnologias Utilizadas**
+Atualização parcial
 
-☕ Java 17+
+Exclusão por ID
 
-🌱 Spring Boot
+✅ Books
 
-🏛️ Spring Data JPA
+Registro de livros com nome, ano e ISBN
 
-💾 Hibernate
+Associação opcional a uma editora
 
-🗄️ Banco relacional (MySQL)
+Atualização
 
+Remoção por ID
 
-🛠️ **Como Rodar o Projeto**
-1️⃣ Clonar o repositório
-git clone https://github.com/seu-usuario/seu-repositorio.git
+Consulta geral
 
-2️⃣ Entrar no diretório
-cd seu-repositorio
+✅ Publishers
 
-3️⃣ Executar
+Cadastro de editoras
 
-Via terminal:
+Listagem total
 
-./mvnw spring-boot:run
+Atualização de dados
 
-Ou
+Exclusão por ID
 
-Via IDE (IntelliJ / VSCode / Eclipse)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+**5. Endpoints Principais**
 
-🧪 **Testando a API**
-
-Você pode utilizar ferramentas como:
-
-🔍 Postman
-
-⚡ Thunder Client
-
-🌐 Insomnia
-
-Ou acessar diretamente via navegador quando for GET.
+| Entidade      | Método | Rota                | Função         |
+| ------------- | ------ | ------------------- | -------------- |
+| **Author**    | POST   | `/api/author`       | Salvar autor   |
+|               | GET    | `/api/author`       | Listar todos   |
+|               | DELETE | `/api/author/{id}`  | Deletar        |
+|               | PUT    | `/api/author/{id}`  | Atualizar      |
+| **Book**      | POST   | `/api/library`      | Salvar livro   |
+|               | GET    | `/api/library`      | Listar todos   |
+|               | DELETE | `/api/library/{id}` | Deletar        |
+|               | PUT    | `/api/library/{id}` | Atualizar      |
+| **Publisher** | POST   | `/api/Library`      | Salvar editora |
+|               | GET    | `/api/Library`      | Listar todas   |
+|               | DELETE | `/api/Library/{id}` | Deletar        |
+|               | PUT    | `/api/Library/{id}` | Atualizar      |
 
 
-📦 **Modelo Publisher**
-Campo	       Tipo	             Exemplo
-id	         Long	                1
-name	      String	       "Penguin Books"
-address	    String	        "Rua A, 123"
-cnpj	      String	     "12.345.678/0001-90"
-phone	      String	      "(11) 99999-9999"
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-🚀 **Pontos Fortes do Projeto**
+**6. Como Executar**
+
+# Clonar o projeto
+git clone <link-do-repositorio>
+
+# Entrar na pasta
+cd library-api
+
+# Rodar o projeto
+mvn spring-boot:run,
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**7. Melhorias Futuras**
+
+Adicionar autenticação e controle de acesso
+
+Documentação via Swagger
+
+DTOs com MapStruct
+
+Tratamento global de exceções (ExceptionHandler)
+
+Paginação, filtros e ordenação
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**8. Pontos Fortes do Projeto**
 
 Arquitetura limpa e alinhada ao padrão Spring
 
@@ -125,24 +144,11 @@ Responsabilidade bem distribuída por camadas
 
 Ideal para portfolio profissional
 
-📌 **Possíveis Melhorias Futuras**
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-✔️ Implementar DTOs para desacoplar entidades da API
+**9. Autores**
 
-✔️ Adicionar validação com @Valid e Bean Validation
-
-✔️ Implementar Swagger/OpenAPI
-
-✔️ Criar autenticação JWT
-
-✔️ Adicionar testes unitários e de integração
-
-✔️ Criar relacionamento: Publisher → Books
-
-
-🧑‍💻 **Autores**
-Daniel Dias;
-João Guilhereme;
-José Gabriel;
-Miguel Ferreira;
-
+ - Daniel Dias.
+ - João Guilherme.
+ - José Gabriel.
+ - Miguel Ferreira.
