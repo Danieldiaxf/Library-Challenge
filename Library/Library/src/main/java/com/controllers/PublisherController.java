@@ -17,46 +17,54 @@ import com.repositories.PublisherRepository;
 
 import jakarta.annotation.Nonnull;
 
+// Controlador REST responsável pelos endpoints relacionados à entidade Publisher
 @RestController
-@RequestMapping( "/api/Library" )
-
+// Define o prefixo "/api/Library" para todas as rotas deste controller
+@RequestMapping("/api/Library")
 public class PublisherController {
 
+    // Injeta automaticamente o repositório de Publisher
     @Autowired
     PublisherRepository publisherRepository;
 
-    
+    // Endpoint POST para cadastrar um novo Publisher
     @PostMapping
-    public Publisher savPublisher( @RequestBody @NonNull Publisher publisher ) {
-        return publisherRepository.save( publisher );
+    public Publisher savPublisher(@RequestBody @NonNull Publisher publisher) {
+        // Salva o publisher no banco e retorna o objeto persistido
+        return publisherRepository.save(publisher);
     }
 
+    // Endpoint GET que retorna a lista de todas as publishers cadastradas
     @GetMapping
     public List<Publisher> showPublishers() {
         return publisherRepository.findAll();
     }
 
-    @DeleteMapping
-    public void deletePublisher( @PathVariable @Nonnull long id ) {
-        publisherRepository.deleteById( id );
+    // Endpoint DELETE para remover uma publisher pelo ID
+    @DeleteMapping("/{id}")
+    public void deletePublisher(@PathVariable @Nonnull long id) {
+        // Remove o registro correspondente ao ID informado
+        publisherRepository.deleteById(id);
     }
 
-    
-    @PutMapping( "/{id}" )
-	public Publisher updatePublisher( @PathVariable @Nonnull long id, @RequestBody Publisher newPublisher ) {
-		Optional<Publisher> optionalPublisher = publisherRepository.findById( id );
-		if ( optionalPublisher.isPresent( ) ) {
-			Publisher publisher = optionalPublisher.get();
-			publisher.setName( newPublisher.getName( ) );
-			publisher.setAddress( newPublisher.getAddress( ) );
-			publisher.setCnpj( newPublisher.getCnpj( ) );
-            publisher.setPhone(newPublisher.getPhone( ));
-			return publisherRepository.save( publisher );
-		}
-		return null;
+    // Endpoint PUT para atualizar os dados de uma publisher existente
+    @PutMapping("/{id}")
+    public Publisher updatePublisher(@PathVariable @Nonnull long id, @RequestBody Publisher newPublisher) {
 
-    
+        // Busca o publisher pelo ID
+        Optional<Publisher> optionalPublisher = publisherRepository.findById(id);
 
+        // Se encontrado, copia os novos dados e salva
+        if (optionalPublisher.isPresent()) {
+            Publisher publisher = optionalPublisher.get();
+            publisher.setName(newPublisher.getName());
+            publisher.setAddress(newPublisher.getAddress());
+            publisher.setCnpj(newPublisher.getCnpj());
+            publisher.setPhone(newPublisher.getPhone());
+            return publisherRepository.save(publisher);
+        }
+
+        // Caso o ID não exista, retorna null (ideal: retornar 404)
+        return null;
     }
 }
-
