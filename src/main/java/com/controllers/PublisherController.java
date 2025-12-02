@@ -20,7 +20,7 @@ import jakarta.annotation.Nonnull;
 // Controlador REST responsável pelos endpoints relacionados à entidade Publisher
 @RestController
 // Define o prefixo "/api/Library" para todas as rotas deste controller
-@RequestMapping("/api/Library")
+@RequestMapping("/api/publisher")
 public class PublisherController {
 
     // Injeta automaticamente o repositório de Publisher

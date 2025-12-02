@@ -9,43 +9,30 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.NotBlank;
 
-// Indica que esta classe representa uma entidade JPA mapeada para uma tabela no banco
 @Entity
 public class Author {
 
-    // Define um relacionamento One-to-Many entre Author e Book
     @OneToMany
-    // Especifica a coluna que fará o vínculo na tabela Book (chave estrangeira)
     @JoinColumn( name = "Publisher_id" )
     private List<Book> books;
     
-    // Identifica o campo como chave primária
     @Id
-    // Define que o ID será gerado automaticamente pelo banco (auto-increment)
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private Long id;
 
-    // Campo obrigatório (not null) do nome do autor
     @Column( nullable = false )
     private String name;
 
-    // Campo obrigatório, único e renomeado como "CPF" no banco
     @Column( nullable = false, unique = true, name = "CPF" )
-    @NotBlank // Validação: não pode ser vazio nem apenas espaços
     private String CPF;
 
-    // Armazena o email do autor (campo opcional)
     private String email;
 
-    // Armazena a data de nascimento (campo opcional — seria ideal usar LocalDate)
     private String birth;
 
-    // Armazena o endereço do autor
     private String address;
 
-    // Getters e setters para acesso e modificação dos atributos
     public Long getId( ) {
         return id;
     }

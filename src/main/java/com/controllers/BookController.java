@@ -17,8 +17,7 @@ import com.repositories.BookRepository;
 import jakarta.annotation.Nonnull;
 
 @RestController
-@RequestMapping( "/api/library" )
-
+@RequestMapping( "/api/book" )
 public class BookController {
     
 	@Autowired
