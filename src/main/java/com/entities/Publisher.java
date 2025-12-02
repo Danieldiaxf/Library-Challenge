@@ -2,6 +2,8 @@ package com.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -74,6 +76,7 @@ public class Publisher {
         this.phone = phone;
     }
 
+    @JsonIgnore
     public List<Book> getBooks() {
         return books;
     }
