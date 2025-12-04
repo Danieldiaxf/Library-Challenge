@@ -46,6 +46,7 @@ public class BookController {
 			book.setName( newBook.getName( ) );
 			book.setIsbn( newBook.getIsbn( ) );
 			book.setYear( newBook.getYear( ) );
+			book.setLanguage(newBook.getLanguage( ));
 			return bookRepository.save( book );
 		}
 		return null;
